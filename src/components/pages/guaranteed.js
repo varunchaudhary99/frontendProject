@@ -1,13 +1,16 @@
 
-
+import Navbar from "../navBar";
+import TabsPage from "../pages/tabpage"
 import Footer from "../footer";
 function Guaranteed(){
       return (
-   <div className='container-fluid'>
-        <Navbar/>
-       
-<Footer></Footer>
-  </div>
+    <> <Navbar/>
+        <div className="component-spacing-spacing">
+</div>
+        <TabsPage></TabsPage> 
+    <Footer></Footer>
+  
+  </>
   )
 }
 export default Guaranteed

@@ -3,9 +3,10 @@ import Navbar from '../components/navBar'
 import Carousel from '../components/Carousel'
 import AllInsurerance from '../components/AllInsurance'
 import Reviews from '../components/review'
+import InsuranceDekhoWorks from './pages/how_works'
 import Benefits from '../components/benifits'
-import InsuranceDekhoWorks from '../components/how_works'
 import Footer from '../components/footer'
+import OurPartnersSlider from './ourPartnerSilder'
 function Home() {
    
     return (
@@ -20,8 +21,8 @@ function Home() {
         <AllInsurerance></AllInsurerance>
          <Reviews></Reviews>
          <Benefits></Benefits>
-         <InsuranceDekhoWorks></InsuranceDekhoWorks>*
-         
+         <InsuranceDekhoWorks/>
+         <OurPartnersSlider></OurPartnersSlider>
         <Footer></Footer>
       </div>
     )

@@ -9,30 +9,34 @@ import familys from '../assets/icon_family.png';
 import Guaranteeds from '../assets/icon_guaranteeReturn.png';
 import viewmores from '../assets/icon_viewmore.png';
 import CarPopup from './carNumberPopup'
+import BikePopup from './bikeNumberPopup';
+import { useNavigate } from 'react-router-dom';
+import Trem from './pages/trem'
+import Family from './pages/family'
+import Business from './pages/business';
 function AllInsurerance(){
    const [isPopupOpen, setIsPopupOpen] = useState(false);
-//   const carhandleClick = async () => {
-//   try {
-//     const response = await fetch('http://localhost:5000/api/carNumber', {
-//       method: 'POST',       headers: {
-//         'Content-Type': 'application/json',
-        
-//       },
-//       body: JSON.stringify({ carNumber }),
-    
-//     });
+   const [bikePopupOpen, setBikePopupOpen] = useState(false);
+     const navigate = useNavigate();
 
-//     if (!response.ok) throw new Error('API request failed');
-//       const data = await response.json();
-//       console.log('API Response:', data);
-
-//       // Navigate to Car Insurance Page
-//       navigate('/car-insurance');
-//   } catch (error) {
-//     console.error('Error:', error.message);
-//   }
-// };
-
+  const goToHealth = () => {
+    navigate('/health'); 
+  };
+const goToTrem = () => {
+    navigate('/trem'); 
+  };
+const goToFamily = () => {
+    navigate('/family'); 
+  };
+const goToInvestment = () => {
+    navigate('/investment'); 
+  };
+  const goToBusiness = () => {
+    navigate('/business'); 
+  };
+   const goToGuaranteed = () => {
+    navigate('/guaranteed'); 
+  };
     return ( 
     
     <div class="service-container">
@@ -42,53 +46,55 @@ function AllInsurerance(){
       <p>Insurance</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item" onClick={() => setBikePopupOpen(true)}>
       <img src={Bikes} alt="Bike Insurance"/>
       <h4>Bike</h4>
       <p>Insurance</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item"  onClick={goToHealth}>
       <img src={healths} alt="Health Insurance"/>
       <h4>Health</h4>
       <p>Insurance</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item"  onClick={goToTrem}>
       
       <img src={lifes}alt="Term Insurance"/>
       <h4>Term</h4>
       <p>Insurance</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item"  onClick={goToInvestment}>  
       <img src={investments} alt="Investment Plans"/>
       <h4>Investment</h4>
       <p>Plans</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item"  onClick={goToBusiness}>
       <img src={businesses} alt="Business Insurance"/>
       <h4>Business</h4>
       <p>Insurance</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item" onClick={goToFamily}>
       <img src={familys} alt="Family Health"/>
       <h4>Family Health</h4>
       <p>Insurance</p>
     </div>
 
-    <div class="service-item">
+    <div class="service-item" onClick={goToGuaranteed}>
       <img src={Guaranteeds} alt="Return Plans"/>
       <h4>Guaranteed</h4>
       <p>Return Plans</p>
     </div>
-
-    <div class="service-item">
-      <img src={viewmores} alt="View More"/>
-      <h4>View More</h4>
-    </div>
+     <BikePopup
+        isOpen={bikePopupOpen}
+        onClose={() => setBikePopupOpen(false)}
+        onLoginSuccess={() => {
+          setBikePopupOpen(false);
+         // setIsLoggedIn(true); 
+        }}></BikePopup>
      <CarPopup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}

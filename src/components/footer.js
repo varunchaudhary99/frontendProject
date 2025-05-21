@@ -5,18 +5,27 @@ import { FaFacebookF, FaYoutube, FaInstagram, FaLinkedinIn, FaTimes } from 'reac
 import greet from '../assets/Grating.png'
 import smiles from '../assets/happysmiles.png'
 import claim from '../assets/claimsetteled.png'
+import { Link } from 'react-router-dom'
 function Footer (){
   return (
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-logo">
-          <img src={require('../assets/logo1.png')} alt="Logo" class="logo" />
+            <Link to="/"><img src={require('../assets/logo1.png')}  alt="Logo" className="logo" alt="InsuranceDekho"
+              style={{ width: '200px', height: 'auto' }} /></Link>
           <div className="social-icons">
-            <FaFacebookF />
-            <FaYoutube />
-            <FaInstagram />
-            <FaLinkedinIn />
-            <FaTimes />
+           <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+        <FaFacebookF size={20} />
+      </a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+        <FaYoutube size={20} />
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+        <FaInstagram size={20} />
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+        <FaLinkedinIn size={20} />
+      </a>
           </div>
           <p>Email: <a href="mailto:support@insurancedekho.com">support@insurancedekho.com</a></p>
           <p>Call: 755 1196 989</p>
@@ -26,15 +35,13 @@ function Footer (){
           <div className="footer-column">
             <h4>Products</h4>
             <ul>
-              <li>Car Insurance</li>
-              <li>Bike Insurance</li>
-              <li>Health Insurance</li>
-              <li>Life Insurance</li>
-              <li>Term Insurance</li>
-              <li>Investment</li>
-              <li>Business</li>
-              <li>Travel Insurance</li>
-              <li>Tax Saving Schemes</li>
+              <li><Link to="/car">Car Insurance</Link></li>
+              <li><Link to="/bike">Bike Insurance</Link></li>
+              <li><Link to="/health">Health Insurance</Link></li>
+              <li><Link to="/trem">Term Insurance</Link></li>
+               <li><Link to="/investment">Investment</Link></li>
+                <li><Link to="/business">Business</Link></li>
+                 <li><Link to="/adminNavbar">Admin</Link></li>
             </ul>
           </div>
 

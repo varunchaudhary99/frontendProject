@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import OtpPopup from './verifyotp'; 
-
+import { BASE_URL } from './constants';
 function LoginPopup({ isOpen, onClose, onLoginSuccess }) {
   const [mobile, setMobile] = useState('');
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ function LoginPopup({ isOpen, onClose, onLoginSuccess }) {
       setLoading(true);
       setMessage('');
 
-      const response = await fetch('http://localhost:5000/api/send-otp', {
+      const response = await fetch(`${BASE_URL}/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mobile }),

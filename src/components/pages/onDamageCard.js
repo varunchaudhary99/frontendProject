@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const InsuranceCard = ({ company }) => {
+const OnDamageCard = ({ ondamagecompany }) => {
   const [paymentId, setPaymentId] = useState("");
 
   const loadScript = (src) => {
@@ -15,18 +15,16 @@ const InsuranceCard = ({ company }) => {
 
   const displayRazorpay = async () => {
     const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
-
     if (!res) {
       alert('Razorpay SDK failed to load. Are you online?');
       return;
     }
 
-    
-    const amountInPaise = parseFloat(company.startingPriceINR) * 100;
+    const amountInPaise = parseFloat(ondamagecompany.startingPriceINR) * 100;
 
     const options = {
       key: "rzp_test_8bWkHX0DRZvFA0",
-      amount: amountInPaise.toString(), 
+      amount: amountInPaise.toString(),
       currency: "INR",
       name: "Acme Corp",
       description: "Insurance Payment",
@@ -69,17 +67,18 @@ const InsuranceCard = ({ company }) => {
   return (
     <div className="insurance-card">
       <div className="card-top">
-        <img src={company.photoUrl} alt={`${company.name} Logo`} className="company-logo" />
+        <img src={ondamagecompany.planUrl} alt="company" className="company-logo" />
         <div>
-          <h3>{company.name}</h3>
+          <h3>{ondamagecompany.company}</h3>
           <div className="card-details">
-            <p><strong>Cashless Garages:</strong> {company.cashlessGarages}</p>
-            <p><strong>Claims Settled:</strong> {company.claimsSettled}</p>
+            <p><strong>Cashless Garages:</strong> {ondamagecompany.cashlessGarages}</p>
+            <p><strong>Claim Settlement Ratio:</strong> {ondamagecompany.claimSettlementRatio}</p>
+            <p><strong>Zero Dep Claims:</strong> {ondamagecompany.zeroDepClaims}</p>
           </div>
         </div>
         <div className="price-box">
           <p>Starting From</p>
-          <h3>₹ {company.startingPriceINR}</h3>
+          <h3>₹ {ondamagecompany.startingPrice}</h3>
           <button className="check-price-btn" onClick={displayRazorpay}>
             Pay Now
           </button>
@@ -90,4 +89,4 @@ const InsuranceCard = ({ company }) => {
   );
 };
 
-export default InsuranceCard;
+export default OnDamageCard;

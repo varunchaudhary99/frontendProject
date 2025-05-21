@@ -1,14 +1,15 @@
 import Navbar from '../../components/navBar'
 import Footer from "../footer";
-import TabBar from '../tabbar';
-import InsuranceCard from './insuranceCard';
+import TabsPage from './tabpage';
 function Car (){
   return (
     <div>
    <div className='container-fluid'>
         <Navbar/>
-        <TabBar></TabBar>
-        <InsuranceCard></InsuranceCard>
+        <div className="component-spacing-spacing">
+</div>
+        <TabsPage></TabsPage>
+        
 
        
 <Footer></Footer>
