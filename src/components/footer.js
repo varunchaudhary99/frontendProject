@@ -1,17 +1,19 @@
 // Footer.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css'
 import { FaFacebookF, FaYoutube, FaInstagram, FaLinkedinIn, FaTimes } from 'react-icons/fa';
 import greet from '../assets/Grating.png'
 import smiles from '../assets/happysmiles.png'
 import claim from '../assets/claimsetteled.png'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom';
+import AdminPopup from '../components/admin_popup'
 function Footer (){
+  const [isAdminPopupOpen, setIsPopupAdminOpen] = useState(false);
   return (
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-logo">
-            <Link to="/"><img src={require('../assets/logo1.png')}  alt="Logo" className="logo" alt="InsuranceDekho"
+            <Link to="/"><img src={require('../assets/logo1.png')}  alt="Logo" className="logo"
               style={{ width: '200px', height: 'auto' }} /></Link>
           <div className="social-icons">
            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
@@ -41,7 +43,14 @@ function Footer (){
               <li><Link to="/trem">Term Insurance</Link></li>
                <li><Link to="/investment">Investment</Link></li>
                 <li><Link to="/business">Business</Link></li>
-                 <li><Link to="/adminNavbar">Admin</Link></li>
+                 <li>
+  <Link to="#" onClick={(e) => {
+  e.preventDefault();
+  setIsPopupAdminOpen(true);
+}}>
+  Admin
+</Link>
+</li>
             </ul>
           </div>
 
@@ -88,6 +97,15 @@ function Footer (){
           </div>
         </div>
       </div>
+      <AdminPopup
+       isOpen={isAdminPopupOpen}
+        onClose={() => setIsPopupAdminOpen(false)}
+        onLoginSuccess={() => {
+          setIsPopupAdminOpen(false);
+          
+        }}
+      ></AdminPopup>
+      
     </footer>
   );
 };

@@ -8,7 +8,7 @@ import AdminPopup from './admin_popup';
 function Navbar() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
- const [isAdminPopupOpen, setIsPopupAdminOpen] = useState(false);
+ 
 
 
 
@@ -27,13 +27,19 @@ const handleLogout = async () => {
     if (response.ok) {
       localStorage.removeItem('token'); 
       alert('Logged out successfully!');
+      window.location.href = '/'; // optional redirect
     } else {
-      alert('Logout failed');
+      console.log(token)
+      const data = await response.json();
+      alert(data.error || 'Logout failed'); // better error message
     }
+
   } catch (err) {
+    console.error(err);
     alert('Logout error');
   }
 };
+
 
   return (
     <div>

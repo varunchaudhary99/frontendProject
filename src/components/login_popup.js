@@ -72,7 +72,7 @@ function LoginPopup({ isOpen, onClose, onLoginSuccess }) {
         mobile={mobile}
         onVerifySuccess={() => {
           setIsOtpOpen(false);
-          onLoginSuccess(); // ✅ Tell parent we're logged in
+          onLoginSuccess();
         }}></OtpPopup>
     </>
   );

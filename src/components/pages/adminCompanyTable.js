@@ -16,7 +16,7 @@ export default function CompanyTable({ companies, onEdit, onDelete }) {
       </thead>
       <tbody>
         {companies.map((c) => (
-          <tr key={c.id}>
+          <tr key={c._id}>
             <td>{c.name}</td>
             <td>{c.cashlessGarages}</td>
             <td>{c.claimsSettled}</td>
@@ -24,7 +24,7 @@ export default function CompanyTable({ companies, onEdit, onDelete }) {
             <td>{c.startingPriceINR}</td>
             <td>
               <BiEditAlt className="icon" onClick={() => onEdit(c)} />
-              <BsTrash className="icon" onClick={() => onDelete(c.id)} />
+              <BsTrash className="icon" onClick={() => onDelete(c._id)} />
             </td>
           </tr>
         ))}

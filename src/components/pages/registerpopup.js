@@ -8,9 +8,6 @@ function Register() {
     });
   
     const navigate = useNavigate();
-    const handleRegClick = () => {
-      navigate('/register');
-    };
   
   const handleRegister = async (e) => {
   e.preventDefault();
@@ -61,7 +58,7 @@ function Register() {
     }
 
     alert('Registered successfully!');
-    navigate('/home');
+    navigate('/adminNavbar');
 
   } catch (error) {
     console.error('Registration failed:', error.message);
@@ -102,7 +99,7 @@ function Register() {
   
   <button type="submit">Register</button>
 </form>
-        <button onClick={handleRegClick} >Login</button>
+       
       </div>
     );
   }

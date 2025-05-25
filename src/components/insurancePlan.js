@@ -5,12 +5,15 @@ import { BASE_URL } from './constants';
 function InsurancePlans() {
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(false);
-
+const token = localStorage.getItem("token");
   // Fetch insurance plans from API
   async function fetchPlans() {
     setLoading(true);
     try {
-      const response = await fetch(`${BASE_URL}/api/getAllCompanies`);
+      const response = await fetch(`${BASE_URL}/getAllCompanies`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }});
       const data = await response.json();
       setPlans(data);
       console.log("============plan===========", data);

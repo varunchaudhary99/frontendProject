@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import '../App.css';
 import { useNavigate } from 'react-router-dom';
-function AdminPopup({ isOpen, onClose, onLoginSuccess }) {
+function AdminPopup({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
 
-
+const handleSignupClick = () => {
+    navigate('/register');
+  };
    const handleLogin = async (e) => {
     e.preventDefault();
   
@@ -35,7 +37,7 @@ function AdminPopup({ isOpen, onClose, onLoginSuccess }) {
         throw new Error('Access token not found in response');
       }
        if(data.token){
-        navigate('/admin')
+        navigate('/adminNavbar')
        }
       console.log('Login successful, token:', data.token);
       
@@ -47,27 +49,31 @@ function AdminPopup({ isOpen, onClose, onLoginSuccess }) {
 
   return (
     <>
-     <div className="popup-overlay">
-        <div className="popup-box">
+     <div className="card">
+        <div className="logo-container">
           <button className="close-btn" onClick={onClose}>×</button>
           <h2>admin Login</h2>
-          <input
-            type="text"
-            placeholder="Email"
-            className="input-box"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Password"
-            className="input-box"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button className="continue-btn" onClick={handleLogin} >Submit
-            </button>
+            <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      <button type="submit">Login</button>
+
+      <button onClick={handleSignupClick}>Register</button>
     
+      </form>
+      
     </div>
     </div>
     </>

@@ -44,6 +44,7 @@ function App() {
           <Route path="/adminTrem" element={<AdminPanelTrem/>}></Route>
           <Route path="/adminBusiness" element={<AdminPanelBusiness/>}></Route>
           <Route path="/adminFamily" element={<AdminPanelFamily/>}></Route>
+           <Route path="/register" element={<Register/>}></Route>
              <Route path="/adminGranteee" element={<AdminPanelGranteed/>}></Route>
     </Routes>
   

@@ -7,7 +7,7 @@ function OtpPopup({ isOpen, onClose, mobile, onVerifySuccess }) {
 
   const handleVerifyOtp = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/verify-otp`, {
+      const response = await fetch(`${BASE_URL}/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mobile, otp }),
@@ -16,6 +16,7 @@ function OtpPopup({ isOpen, onClose, mobile, onVerifySuccess }) {
       const result = await response.json();
 
       if (response.ok) {
+         localStorage.setItem('token', result.token); 
         setMessage('OTP verified successfully!');
         onVerifySuccess();
       } else {
